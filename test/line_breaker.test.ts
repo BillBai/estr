@@ -65,9 +65,6 @@ describe('unicode line break tests', () => {
     });
   });
 
-  it('returns the line break type at index', () => {
-
-  });
 });
 
 describe('LineBreaker', () => {
@@ -96,11 +93,12 @@ describe('LineBreaker', () => {
 
     const words = [];
     let last = 0;
-    let bk;
+    let bk = breaker.next();
 
-    while (bk = breaker.next()) {
+    while (bk) {
       words.push(str.slice(last, bk.position));
       last = bk.position;
+      bk = breaker.next();
     }
 
 

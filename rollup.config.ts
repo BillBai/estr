@@ -4,6 +4,8 @@ import sourceMaps from 'rollup-plugin-sourcemaps';
 import camelCase from 'lodash.camelcase';
 import typescript from 'rollup-plugin-typescript2';
 import json from 'rollup-plugin-json';
+import browserifyPlugin from 'rollup-plugin-browserify-transform';
+import brfs from 'brfs';
 
 const pkg = require('./package.json');
 
@@ -25,6 +27,10 @@ export default {
     json(),
     // Compile TypeScript files
     typescript({ useTsconfigDeclarationDir: true }),
+
+    // inline fs.read file content
+    browserifyPlugin(brfs, { parserOpts: { sourceType: "module" } }),
+
     // Allow bundling cjs modules (unlike webpack, rollup doesn't understand cjs)
     commonjs(),
     // Allow node_modules resolution, so you can use 'external' to control
