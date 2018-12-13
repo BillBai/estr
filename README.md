@@ -1,2 +1,2 @@
 # estr
-estr -Essential String Toolkit for Unicode.
+estr - Essential String Toolkit for Unicode.
