@@ -18,12 +18,12 @@ let repository = (parsedUrl.host || "") + (parsedUrl.path || "")
 let ghToken = process.env.GH_TOKEN
 
 echo("Deploying docs!!!")
-cd("docs")
+cd("dist/docs")
 touch(".nojekyll")
 exec("git init")
 exec("git add .")
-exec('git config user.name "--username--"')
-exec('git config user.email "--usermail--"')
+exec('git config user.name "billbai"')
+exec('git config user.email "billbai42@gmail.com"')
 exec('git commit -m "docs(docs): update gh-pages"')
 exec(
   `git push --force --quiet "https://${ghToken}@${repository}" master:gh-pages`
